@@ -49,8 +49,8 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     docs: function () {
       this.fs.copy(
-        this.templatePath('_doc.adoc'),
-        this.destinationPath('src/adocs/doc.adoc')
+        this.templatePath('_main.adoc'),
+        this.destinationPath('src/adocs/main.adoc')
       );
       this.fs.copy(
         this.templatePath('styleesheets/' + this.stylesheet + '.css'),

@@ -11,8 +11,11 @@ module.exports = function (grunt) {
     },
     watch: {
       asciidoc: {
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        },
         files: ['src/adocs/**/*.adoc', 'src/stylesheet/**/*.css'],
-        tasks: ['asciidoc']
+        tasks: ['asciidoctor:dist']
       }
     },
     asciidoctor: {
@@ -31,8 +34,8 @@ module.exports = function (grunt) {
           cwd: 'src/adocs',
           src: '**/*.adoc',
           dest: '<%= yeoman.dist %>',
-          rename: function(dest, src) {
-            return dest + src.replace('.adoc','.html');
+          rename: function (dest, src) {
+            return dest + src.replace('.adoc', '.html');
           }
         }]
       }
@@ -50,6 +53,20 @@ module.exports = function (grunt) {
       },
       server: '.tmp'
     },
+    connect: {
+      options: {
+        port: 9000,
+        // Change this to '0.0.0.0' to access the server from outside.
+        hostname: 'localhost',
+        livereload: 35729
+      },
+      livereload: {
+        options: {
+          open: true,
+          base: '<%= yeoman.dist %>'
+        }
+      }
+    },
     copy: {
       style: {
         files: [{
@@ -64,6 +81,7 @@ module.exports = function (grunt) {
     'clean:server',
     'copy:style',
     'asciidoctor:dist',
+    'connect:livereload',
     'watch'
   ]);
 
