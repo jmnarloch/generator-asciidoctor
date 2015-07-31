@@ -9,49 +9,74 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the doozie ' + chalk.red('Asciidoctor') + ' generator!'
+      'Welcome to the ' + chalk.red('Asciidoctor') + ' generator!'
     ));
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
+    var prompts = [
+      {
+        type: 'list',
+        name: 'docType',
+        message: 'Select your stylesheet',
+        choices: [
+          'article',
+          'book',
+          'manpage',
+          'inline'
+        ],
+        default: 0
+      },
+      {
+        type: 'list',
+        name: 'stylesheet',
+        message: 'Select your stylesheet',
+        choices: [
+          'asciidoctor'
+        ],
+        default: 0
+      }
+    ];
 
     this.prompt(prompts, function (props) {
       this.props = props;
       // To access props later use this.props.someOption;
+
+      this.stylesheet = props.stylesheet
 
       done();
     }.bind(this));
   },
 
   writing: {
-    app: function () {
+    docs: function () {
       this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
+        this.templatePath('_doc.adoc'),
+        this.destinationPath('src/adocs/doc.adoc')
       );
       this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
+        this.templatePath('styleesheets/' + this.stylesheet + '.css'),
+        this.destinationPath('src/stylesheet/asciidoctor.css')
       );
     },
 
     projectfiles: function () {
       this.fs.copy(
-        this.templatePath('editorconfig'),
-        this.destinationPath('.editorconfig')
+        this.templatePath('_package.json'),
+        this.destinationPath('package.json')
       );
       this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('.jshintrc')
+        this.templatePath('_gruntfile.js'),
+        this.destinationPath('Gruntfile.js')
+      );
+      this.fs.copy(
+        this.templatePath('editorconfig'),
+        this.destinationPath('.editorconfig')
       );
     }
   },
 
   install: function () {
-    this.installDependencies();
+    this.installDependencies({
+      bower: false
+    });
   }
 });
