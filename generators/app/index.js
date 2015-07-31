@@ -40,7 +40,7 @@ module.exports = yeoman.generators.Base.extend({
       this.props = props;
       // To access props later use this.props.someOption;
 
-      this.stylesheet = props.stylesheet
+      this.stylesheet = props.stylesheet;
 
       done();
     }.bind(this));

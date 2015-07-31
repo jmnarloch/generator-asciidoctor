@@ -9,7 +9,7 @@ describe('asciidoctor:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({ skipInstall: true })
-      .withPrompts({ someOption: true })
+      .withPrompts({ docType: 'article', stylesheet: 'asciidoctor' })
       .on('end', done);
   });
 
