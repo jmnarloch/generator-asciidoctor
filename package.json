@@ -1,6 +1,6 @@
 {
   "name": "generator-asciidoctor",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Yeoman Aciidoctor generator",
   "license": "MIT",
   "main": "app/index.js",
