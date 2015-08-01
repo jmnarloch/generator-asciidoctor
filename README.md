@@ -1,6 +1,6 @@
 # generator-asciidoctor [![Build Status](https://secure.travis-ci.org/jmnarloch/generator-asciidoctor.png?branch=master)](https://travis-ci.org/jmnarloch/generator-asciidoctor)
 
-> [Yeoman](http://yeoman.io) generator for Asciidoctor.js that lets you quickly setup you everything.
+> [Yeoman](http://yeoman.io) generator for Asciidoctor.js that lets you quickly setup everything.
 
 ## Getting Started
 
