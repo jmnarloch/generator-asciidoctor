@@ -27,18 +27,6 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [
       {
         type: 'list',
-        name: 'docType',
-        message: 'Select your stylesheet',
-        choices: [
-          'article',
-          'book',
-          'manpage',
-          'inline'
-        ],
-        default: 0
-      },
-      {
-        type: 'list',
         name: 'stylesheet',
         message: 'Select your stylesheet',
         choices: this.getStylesheetNames(),
@@ -47,7 +35,6 @@ module.exports = yeoman.generators.Base.extend({
     ];
 
     this.prompt(prompts, function (props) {
-      this.docType = props.docType;
       this.stylesheet = props.stylesheet;
 
       done();
