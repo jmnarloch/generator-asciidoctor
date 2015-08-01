@@ -68,10 +68,18 @@ module.exports = function (grunt) {
       }
     },
     copy: {
-      style: {
+      styles: {
         files: [{
           src: 'src/stylesheet/asciidoctor.css',
           dest: '<%= yeoman.dist %>/asciidoctor.css'
+        }]
+      },
+      images: {
+        files: [{
+          expand: true,
+          cwd: 'src/images/',
+          src: '{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          dest: '<%= yeoman.dist %>/images'
         }]
       }
     }
@@ -79,7 +87,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', [
     'clean:server',
-    'copy:style',
+    'copy',
     'asciidoctor:dist',
     'connect:livereload',
     'watch'
@@ -92,7 +100,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'copy:style',
+    'copy',
     'asciidoctor:dist'
   ]);
 

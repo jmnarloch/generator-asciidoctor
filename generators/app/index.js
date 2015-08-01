@@ -47,9 +47,16 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('_main.adoc'),
         this.destinationPath('src/adocs/main.adoc')
       );
+    },
+
+    resources: function() {
       this.fs.copy(
         this.templatePath('styleesheets/' + this.stylesheet + '.css'),
         this.destinationPath('src/stylesheet/asciidoctor.css')
+      );
+      this.fs.copy(
+        this.templatePath('images/_yeoman.png'),
+        this.destinationPath('src/images/yeoman.png')
       );
     },
 

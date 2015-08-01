@@ -2,8 +2,13 @@
 Doc Writer <doc@example.com>
 :sectnums:
 :toc: left
+:imagesdir: ./images
 
 An introduction to http://asciidoc.org[AsciiDoc] the last documentation tool you will ever use.
+
+Scaffolded with link:http://yeoman.io[Yeoman]
+
+image::yeoman.png[]
 
 == First Section
 
