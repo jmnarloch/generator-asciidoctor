@@ -2,8 +2,20 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var glob = require('glob');
+var path = require('path');
 
 module.exports = yeoman.generators.Base.extend({
+
+  init: function() {
+    this.getStylesheetNames = function() {
+
+      var styles = this.templatePath('styleesheets');
+      return glob.sync('**/*.css', {cwd: styles})
+        .map(function(name){return path.basename(name, '.css')});
+    }
+  },
+
   prompting: function () {
     var done = this.async();
 
@@ -29,17 +41,13 @@ module.exports = yeoman.generators.Base.extend({
         type: 'list',
         name: 'stylesheet',
         message: 'Select your stylesheet',
-        choices: [
-          'asciidoctor'
-        ],
+        choices: this.getStylesheetNames(),
         default: 0
       }
     ];
 
     this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
-
+      this.docType = props.docType;
       this.stylesheet = props.stylesheet;
 
       done();
