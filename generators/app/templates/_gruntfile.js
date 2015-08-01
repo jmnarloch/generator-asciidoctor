@@ -62,7 +62,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          open: 'http://localhost:9000/main.html',
+          open: 'http://<%= connect.options.hostname %>:<%= connect.options.port %>/main.html',
           base: '<%= yeoman.dist %>'
         }
       }
