@@ -7,7 +7,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     yeoman: {
       app: 'src/adocs',
-      dist: 'dist/'
+      dist: 'dist'
     },
     watch: {
       asciidoc: {
@@ -33,7 +33,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'src/adocs',
           src: '**/*.adoc',
-          dest: '<%= yeoman.dist %>',
+          dest: '<%= yeoman.dist %>/',
           rename: function (dest, src) {
             return dest + src.replace('.adoc', '.html');
           }
