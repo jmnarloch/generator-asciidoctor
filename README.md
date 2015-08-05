@@ -28,4 +28,4 @@ Run `grunt` for build and `grunt serve` for preview
 
 ## License
 
-Apache 2.0
+MIT
